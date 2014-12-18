@@ -71,3 +71,23 @@ Tempo().diff(.Years, date: newDate) // "0"
 Tempo().diff(.Months, date: newDate) // "-2"
 newDate.diff(.Secondes, date: Tempo()) // "5849274"
 ```
+
+Get time ago from date or current time:
+Return literal string with the difference between two Tempo.
+
+```Swift
+var date = Tempo { (newTemp) -> () in
+    newTemp.years = 2014
+    newTemp.months = 10
+    newTemp.days = 25
+}
+        
+println(date.timeAgoFromNow()) // "1 months ago"
+
+newTemp.months = 12
+newTemp.days = 18
+newTemp.hours = 12
+
+println(date.timeAgoFromNow()) // "3 hours ago"
+date.timeAgoFrom(otherTempo)
+```
