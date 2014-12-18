@@ -172,7 +172,7 @@ extension Tempo {
             fromDate: fromDate, toDate: toDate, options: NSCalendarOptions.allZeros).hour)
         case .Minutes: return (calendarDate!.components(NSCalendarUnit.MinuteCalendarUnit,
             fromDate: fromDate, toDate: toDate, options: NSCalendarOptions.allZeros).minute)
-        case .Secondes: return (calendarDate!.components(NSCalendarUnit.SecondCalendarUnit,
+        case .Seconds: return (calendarDate!.components(NSCalendarUnit.SecondCalendarUnit,
             fromDate: fromDate, toDate: toDate, options: NSCalendarOptions.allZeros).second)
         default: return 0
         }
@@ -219,7 +219,7 @@ extension Tempo {
     }
     
     func isBefore(date: Tempo) -> Bool? {
-        return self.getValueDiff(date, component: .Secondes, isAfter: false)
+        return self.getValueDiff(date, component: .Seconds, isAfter: false)
     }
     
     func isBefore(date: Tempo, component: ComponentDate) -> Bool? {
@@ -227,7 +227,7 @@ extension Tempo {
     }
     
     func isAfter(date: Tempo) -> Bool? {
-        return self.getValueDiff(date, component: .Secondes, isAfter: true)
+        return self.getValueDiff(date, component: .Seconds, isAfter: true)
     }
     
     func isAfter(date: Tempo, component: ComponentDate) -> Bool? {
@@ -235,7 +235,7 @@ extension Tempo {
     }
     
     func isSame(date: Tempo) -> Bool? {
-        return self.getValueSame(date, component: .Secondes)
+        return self.getValueSame(date, component: .Seconds)
     }
     
     func isSame(date: Tempo, component: ComponentDate) -> Bool? {
@@ -252,7 +252,7 @@ extension Tempo {
         case .Days: self.days = (self.days != nil) ? self.days! + value : 0
         case .Hours: self.hours = (self.hours != nil) ? self.hours! + value : 0
         case .Minutes: self.minutes = (self.minutes != nil) ? self.minutes! + value : 0
-        case .Secondes: self.seconds = (self.seconds != nil) ? self.seconds! + value : 0
+        case .Seconds: self.seconds = (self.seconds != nil) ? self.seconds! + value : 0
         default: return
         }
     }
