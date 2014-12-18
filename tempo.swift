@@ -269,6 +269,6 @@ extension Tempo {
 }
 
 enum ComponentDate {
-    case Years, Months, Days, Hours, Minutes, Secondes
-    static let components = [Secondes, Minutes, Hours, Days, Months, Years]
+    case Years, Months, Days, Hours, Minutes, Seconds
+    static let components = [Seconds, Minutes, Hours, Days, Months, Years]
 }
