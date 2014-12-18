@@ -73,7 +73,7 @@ newDate.diff(.Secondes, date: Tempo()) // "5849274"
 ```
 
 Get time ago from date or current time:
-Return literal string with the difference between two Tempo.
+Return literal string with the difference between two Tempo. Can be usefull in for display in message or feeds.
 
 ```Swift
 var date = Tempo { (newTemp) -> () in
@@ -89,5 +89,6 @@ newTemp.days = 18
 newTemp.hours = 12
 
 println(date.timeAgoFromNow()) // "3 hours ago"
+println(Tempo().timeAgoFromNow()) // "seconds ago"
 date.timeAgoFrom(otherTempo)
 ```
