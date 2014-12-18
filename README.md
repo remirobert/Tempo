@@ -22,9 +22,9 @@ Convert Tempo to string, with specific format:
 All the basics format work with Tempo.
 
 ```Swift
-Tempo().formatDate() // "2014 12 12 00:00:00"
-Tempo().formatDate("yyyy MM dd") // "2014 12 12"
-Tempo().formatDate("dd EE / MMMM / yyyy") // "12 Fri / December / 2014"
+Tempo().formatDate()                        // "2014 12 12 00:00:00"
+Tempo().formatDate("yyyy MM dd")            // "2014 12 12"
+Tempo().formatDate("dd EE / MMMM / yyyy")   // "12 Fri / December / 2014"
 ```
 
 With Tempo, it's more easy to chain basic operation:
@@ -50,11 +50,11 @@ var newDate = Tempo { (newTemp) -> () in
 println("newDate: \(newDate.formatDate())")          // "2014 10 12 00:02:00"
 println("current time : \(Tempo().formatDate())")    // "2014 12 18 15:40:11"
 
-Tempo().isAfter(newDate) // "True"
-Tempo().isBefore(newDate) // "False"
-Tempo().isAfter(newDate, .Months) // "False"
-Tempo().isSame(newDate) // "False"
-Tempo().isSame(newDate, .Years) // "True"
+Tempo().isAfter(newDate)                // "True"
+Tempo().isBefore(newDate)               // "False"
+Tempo().isAfter(newDate, .Months)       // "False"
+Tempo().isSame(newDate)                 // "False"
+Tempo().isSame(newDate, .Years)         // "True"
 ```
 
 Know difference between two date component:
@@ -67,9 +67,9 @@ var newDate = Tempo { (newTemp) -> () in
   newTemp.minutes = 2
 }
 
-Tempo().diff(.Years, date: newDate) // "0"
-Tempo().diff(.Months, date: newDate) // "-2"
-newDate.diff(.Secondes, date: Tempo()) // "5849274"
+Tempo().diff(.Years, date: newDate)     // "0"
+Tempo().diff(.Months, date: newDate)    // "-2"
+newDate.diff(.Secondes, date: Tempo())  // "5849274"
 ```
 
 Get time ago from date or current time:
@@ -82,13 +82,13 @@ var date = Tempo { (newTemp) -> () in
     newTemp.days = 25
 }
         
-println(date.timeAgoFromNow()) // "1 months ago"
+println(date.timeAgoFromNow())      // "1 months ago"
 
 newTemp.months = 12
 newTemp.days = 18
 newTemp.hours = 12
 
-println(date.timeAgoFromNow()) // "3 hours ago"
-println(Tempo().timeAgoFromNow()) // "seconds ago"
+println(date.timeAgoFromNow())      // "3 hours ago"
+println(Tempo().timeAgoFromNow())   // "seconds ago"
 date.timeAgoFrom(otherTempo)
 ```
