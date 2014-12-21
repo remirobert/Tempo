@@ -123,8 +123,8 @@ extension Tempo {
         default: Void()
         }
         switch (diffComponent[2] as NSDateComponents).hour {
-        case (1320...2160): return ("a day ago")
-        case (1320...36000): return ("\((diffComponent[3] as NSDateComponents).day) days ago")
+        case (22...36): return ("a day ago")
+        case (36...600): return ("\((diffComponent[3] as NSDateComponents).day) days ago")
         default: Void()
         }
         switch (diffComponent[3] as NSDateComponents).day {
