@@ -93,7 +93,7 @@ class Tempo: DateFormat {
 
 extension Tempo {
     
-    private func diffAgoFromDate(fromDate: NSDate, toDate: NSDate) -> String? {
+    private func diffAgoFromDate(fromDate: NSDate, toDate: NSDate, isAfter: Bool) -> String? {
         func getDiffSpecificComponent(calendar: NSCalendar, unitComponent: NSCalendarUnit) -> NSDateComponents {
             return (calendar.components(unitComponent,
                 fromDate: fromDate, toDate: toDate, options: NSCalendarOptions.allZeros))
@@ -111,37 +111,50 @@ extension Tempo {
             indexComponent++
         }
         
+        if (isAfter == true) {
+            (diffComponent[0] as NSDateComponents).second *= -1
+            (diffComponent[1] as NSDateComponents).minute *= -1
+            (diffComponent[2] as NSDateComponents).hour *= -1
+            (diffComponent[3] as NSDateComponents).day *= -1
+            (diffComponent[4] as NSDateComponents).month *= -1
+            (diffComponent[5] as NSDateComponents).year *= -1
+        }
+        
         switch (diffComponent[0] as NSDateComponents).second {
-        case (0...45): return ("seconds ago")
+        case (0...45): return(isAfter == false) ?  ("seconds ago") :  ("in seconds")
         case (45...90): return ("a minute ago")
         case (90...2700): return ("\((diffComponent[1] as NSDateComponents).minute) minutes ago")
         default: Void()
         }
         switch (diffComponent[1] as NSDateComponents).minute {
         case (45...90): return ("an hour ago")
-        case (90...1320): return ("\(((diffComponent[2] as NSDateComponents).hour)) hours ago")
+        case (90...1320): return (isAfter == false) ? ("\(((diffComponent[2] as NSDateComponents).hour)) hours ago") :
+            ("in \(((diffComponent[2] as NSDateComponents).hour)) hours")
         default: Void()
         }
         switch (diffComponent[2] as NSDateComponents).hour {
         case (22...36): return ("a day ago")
-        case (36...600): return ("\((diffComponent[3] as NSDateComponents).day) days ago")
+        case (36...600): return(isAfter == false) ? ("\((diffComponent[3] as NSDateComponents).day) days ago") :
+            ("in \((diffComponent[3] as NSDateComponents).day) days")
         default: Void()
         }
         switch (diffComponent[3] as NSDateComponents).day {
         case (25...45): return ("a month ago")
-        case (45...345): return ("\((diffComponent[4] as NSDateComponents).month) months ago")
-        case (345...547): return ("a year ago")
+        case (45...345): return (isAfter == false) ? ("\((diffComponent[4] as NSDateComponents).month) months ago") :
+            ("in \((diffComponent[4] as NSDateComponents).month) months")
+        case (345...547): return(isAfter == false) ? ("a year ago") : ("in a year")
         default: Void()
         }
         if ((diffComponent[3] as NSDateComponents).day >= 548) {
-            return ("\((diffComponent[5] as NSDateComponents).year) years ago")
+            return(isAfter == false) ? ("\((diffComponent[5] as NSDateComponents).year) years ago") :
+                ("in \((diffComponent[5] as NSDateComponents).year) years")
         }
         return nil
     }
     
     func timeAgoFromNow() -> String? {
         if let currentDate = self.formNSDate() {
-            return self.diffAgoFromDate(currentDate, toDate: NSDate())
+            return self.diffAgoFromDate(currentDate, toDate: NSDate(), isAfter: self.isAfter(Tempo())!)
         }
         return nil
     }
@@ -149,7 +162,7 @@ extension Tempo {
     func timeAgoFrom(date: Tempo) -> String? {
         if let currentDate = self.formNSDate() {
             if let testDate = date.convertToNSDate() {
-                return self.diffAgoFromDate(currentDate, toDate: testDate)
+                return self.diffAgoFromDate(currentDate, toDate: testDate, isAfter: self.isAfter(date)!)
             }
         }
         return nil
@@ -172,7 +185,7 @@ extension Tempo {
             fromDate: fromDate, toDate: toDate, options: NSCalendarOptions.allZeros).hour)
         case .Minutes: return (calendarDate!.components(NSCalendarUnit.MinuteCalendarUnit,
             fromDate: fromDate, toDate: toDate, options: NSCalendarOptions.allZeros).minute)
-        case .Seconds: return (calendarDate!.components(NSCalendarUnit.SecondCalendarUnit,
+        case .Secondes: return (calendarDate!.components(NSCalendarUnit.SecondCalendarUnit,
             fromDate: fromDate, toDate: toDate, options: NSCalendarOptions.allZeros).second)
         default: return 0
         }
@@ -219,7 +232,7 @@ extension Tempo {
     }
     
     func isBefore(date: Tempo) -> Bool? {
-        return self.getValueDiff(date, component: .Seconds, isAfter: false)
+        return self.getValueDiff(date, component: .Secondes, isAfter: false)
     }
     
     func isBefore(date: Tempo, component: ComponentDate) -> Bool? {
@@ -227,7 +240,7 @@ extension Tempo {
     }
     
     func isAfter(date: Tempo) -> Bool? {
-        return self.getValueDiff(date, component: .Seconds, isAfter: true)
+        return self.getValueDiff(date, component: .Secondes, isAfter: true)
     }
     
     func isAfter(date: Tempo, component: ComponentDate) -> Bool? {
@@ -235,7 +248,7 @@ extension Tempo {
     }
     
     func isSame(date: Tempo) -> Bool? {
-        return self.getValueSame(date, component: .Seconds)
+        return self.getValueSame(date, component: .Secondes)
     }
     
     func isSame(date: Tempo, component: ComponentDate) -> Bool? {
@@ -252,7 +265,7 @@ extension Tempo {
         case .Days: self.days = (self.days != nil) ? self.days! + value : 0
         case .Hours: self.hours = (self.hours != nil) ? self.hours! + value : 0
         case .Minutes: self.minutes = (self.minutes != nil) ? self.minutes! + value : 0
-        case .Seconds: self.seconds = (self.seconds != nil) ? self.seconds! + value : 0
+        case .Secondes: self.seconds = (self.seconds != nil) ? self.seconds! + value : 0
         default: return
         }
     }
@@ -269,6 +282,6 @@ extension Tempo {
 }
 
 enum ComponentDate {
-    case Years, Months, Days, Hours, Minutes, Seconds
-    static let components = [Seconds, Minutes, Hours, Days, Months, Years]
+    case Years, Months, Days, Hours, Minutes, Secondes
+    static let components = [Secondes, Minutes, Hours, Days, Months, Years]
 }
