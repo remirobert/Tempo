@@ -107,14 +107,15 @@ var newDate = Tempo { (newTemp) -> () in
   newTemp.minutes = 2
 }
 
-Tempo().diffYear(newDate)     // "0"
-Tempo().diffMonth(newDate)    // "-4"
-Tempo().diffWeek(newDate)    // "-18"
-Tempo().diffDay(newDate)  // "-130"
+Tempo().diffYear(newDate)                  // "0"
+Tempo().diffMonth(newDate)                // "-4"
+Tempo().diffWeek(newDate)                // "-18"
+Tempo().diffDay(newDate)                // "-130"
 ```
 
 Get time ago from date or current time:
 Return literal string with the difference between two Tempo. Can be usefull in for display in message or feeds.
+You have three diferent kind of display.
 
 ```Swift
 var date = Tempo { (newTemp) -> () in
@@ -122,14 +123,16 @@ var date = Tempo { (newTemp) -> () in
     newTemp.months = 10
     newTemp.days = 25
 }
-        
-println(date.timeAgoFromNow())      // "1 months ago"
 
-newTemp.months = 12
-newTemp.days = 18
-newTemp.hours = 12
+// Classic display
+date.timeAgoNow()                       // "3 months ago"
+date.timeAgo(Tempo())
 
-println(date.timeAgoFromNow())      // "3 hours ago"
-println(Tempo().timeAgoFromNow())   // "seconds ago"
-date.timeAgoFrom(otherTempo)
+// Short display
+date.timeAgoSimpleNow()                 // "3mo"
+date.timeAgoSimple(Tempo())
+
+// More readable display
+date.dateTimeUntilNow()                 // "This year"
+date.dateTimeUntil(Tempo())
 ```
