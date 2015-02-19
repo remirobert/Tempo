@@ -76,6 +76,27 @@ Tempo().isThisMonth(newDate)                            // "true"
 Tempo().isThisYear(newDate)                             // "true"
 ```
 
+Tempo also override operator the simple comparaison :
+
+```Swift
+
+// same as tempo1.isBefore(tempo2)
+if tempo1 < tempo2 {
+}
+
+// same as tempo1.isAfter(tempo2)
+if tempo1 > tempo2 {
+}
+
+// same as tempo1.isSame(tempo2)
+if tempo1 == tempo2 {
+}
+
+// You can add two tempo together:
+let result: Tempo = tempo1 + tempo2
+let result: Tempo = tempo1 - tempo2
+```
+
 Know difference between two date component:
 
 ```Swift
