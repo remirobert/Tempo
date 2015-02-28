@@ -9,6 +9,11 @@ Basics manipulations are already implemented in Tempo.
 
 <h3 align="center"> How to use it </h3>
 
+<p align="center">
+  <img src ="https://raw.githubusercontent.com/remirobert/Tempo/master/tempoExample/howBanner.png"/>
+</p>
+</br>
+
 You can build a new Tempo, with severals way:
 
 ```Swift
@@ -138,4 +143,31 @@ date.timeAgoSimple(Tempo())
 // More readable display
 date.dateTimeUntilNow()                 // "This year"
 date.dateTimeUntil(Tempo())
+```
+<p align="center">
+  <img src ="https://raw.githubusercontent.com/remirobert/Tempo/master/tempoExample/licenseBanner.png"/>
+</p>
+</br>
+
+```
+The MIT License (MIT)
+Copyright (c) 2014 rémi ROBERT
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
