@@ -1,4 +1,7 @@
-<h1 align="center"> Tempo </h1>
+<p align="center">
+  <img src ="https://raw.githubusercontent.com/remirobert/Tempo/master/tempoExample/benner.png"/>
+</p>
+</br>
 
 Tempo was designed to work both in OSX and in iOS (7.0+).
 Work with the time or dates can be cumbersome, iOS development. Tempo allows you to deal easly with date and time.
