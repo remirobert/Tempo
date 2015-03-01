@@ -7,10 +7,8 @@ Tempo was designed to work both in OSX and in iOS (7.0+).
 Work with the time or dates can be cumbersome, iOS development. Tempo allows you to deal easly with date and time.
 Basics manipulations are already implemented in Tempo.
 
-<p align="center">
-  <img src ="https://raw.githubusercontent.com/remirobert/Tempo/master/tempoExample/howBanner.png"/>
-</p>
-</br>
+How to use it ?
+===============
 
 You can build a new Tempo, with severals way:
 
@@ -142,10 +140,9 @@ date.timeAgoSimple(Tempo())
 date.dateTimeUntilNow()                 // "This year"
 date.dateTimeUntil(Tempo())
 ```
-<p align="center">
-  <img src ="https://raw.githubusercontent.com/remirobert/Tempo/master/tempoExample/licenseBanner.png"/>
-</p>
-</br>
+
+License
+=======
 
 ```
 The MIT License (MIT)
