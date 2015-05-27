@@ -117,7 +117,7 @@ class Tempo {
     private class TempoDateFormatter {
         
         var dateFormatter: NSDateFormatter!
-        var calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
+        var calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
         
         class var sharedInstance: TempoDateFormatter {
             struct Static {
@@ -136,7 +136,8 @@ class Tempo {
     }
     
     private func updateDate() {
-        var dateComponents = TempoDateFormatter.sharedInstance.calendar!.components(NSCalendarUnit.WeekdayOrdinalCalendarUnit, fromDate: NSDate())
+        
+        var dateComponents = TempoDateFormatter.sharedInstance.calendar!.components(NSCalendarUnit.CalendarUnitWeekdayOrdinal, fromDate: NSDate())
         
         dateComponents.year = self.years
         dateComponents.month = self.months
@@ -148,10 +149,10 @@ class Tempo {
     }
     
     private func updateComponents() {
-        var dateComponents = TempoDateFormatter.sharedInstance.calendar!.components(NSCalendarUnit.YearCalendarUnit |
-            NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit |
-            NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit |
-            NSCalendarUnit.SecondCalendarUnit, fromDate: self._date)
+        var dateComponents = TempoDateFormatter.sharedInstance.calendar!.components(NSCalendarUnit.CalendarUnitYear |
+            NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay |
+            NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute |
+            NSCalendarUnit.CalendarUnitSecond, fromDate: self._date)
         
         println("y = \(dateComponents.year)")
         self._years = dateComponents.year
@@ -197,10 +198,10 @@ class Tempo {
             TempoDateFormatter.sharedInstance.dateFormatter.dateFormat = currentDateFormat
             if let date = TempoDateFormatter.sharedInstance.dateFormatter.dateFromString(stringDate) {
 
-                var dateComponents = TempoDateFormatter.sharedInstance.calendar!.components(NSCalendarUnit.YearCalendarUnit |
-                    NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit |
-                    NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit |
-                    NSCalendarUnit.SecondCalendarUnit, fromDate: date)
+                var dateComponents = TempoDateFormatter.sharedInstance.calendar!.components(NSCalendarUnit.CalendarUnitYear |
+                    NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay |
+                    NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute |
+                    NSCalendarUnit.CalendarUnitSecond, fromDate: date)
 
                 self._years = dateComponents.year
                 self._months = dateComponents.month
@@ -221,10 +222,10 @@ class Tempo {
             TempoDateFormatter.sharedInstance.dateFormatter.dateFormat = format
             if let date = TempoDateFormatter.sharedInstance.dateFormatter.dateFromString(stringDate) {
             
-                var dateComponents = TempoDateFormatter.sharedInstance.calendar!.components(NSCalendarUnit.YearCalendarUnit |
-                    NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit |
-                    NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit |
-                    NSCalendarUnit.SecondCalendarUnit, fromDate: date)
+                var dateComponents = TempoDateFormatter.sharedInstance.calendar!.components(NSCalendarUnit.CalendarUnitYear |
+                    NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay |
+                    NSCalendarUnit.CalendarUnitHour | NSCalendarUnit.CalendarUnitMinute |
+                    NSCalendarUnit.CalendarUnitSecond, fromDate: date)
                 
                 self._years = dateComponents.year
                 self._months = dateComponents.month
